@@ -98,6 +98,24 @@ app.post('/api/me/favorites', async(req, res) => {
     }
 });
 
+// Delete a favorite
+app.delete('/api/me/favorites/:id', async(req, res) => {
+    try {
+        const myQuery = `
+            DELETE * FROM favorites
+            WHERE id=$1
+            RETURNING *
+        `;
+        
+        const favorites = await client.query(myQuery, [req.params.id]);
+        
+        res.json(favorites.rows);
+
+    } catch (e) {
+        console.error(e);
+    }
+});
+
 // Start the server
 app.get('/api', (req, res) => {
     res.send('does it work?');
