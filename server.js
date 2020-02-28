@@ -51,6 +51,16 @@ app.use('/api/me', ensureAuth);
 
 // *** API Routes ***
 // Get spells data from API
+app.get('/api/allspells', async(req, res) => {
+    try {
+        const data = await request.get(`http://www.dnd5eapi.co/api/spells/`);   
+        res.json(data.body);
+    } catch (e) {
+        console.error(e);
+    }
+});
+
+// Get data for searched spell
 app.get('/api/spells', async(req, res) => {
     try {
         const data = await request.get(`http://www.dnd5eapi.co/api/spells/?name=${req.query.search}`);   
