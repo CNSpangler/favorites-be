@@ -53,7 +53,7 @@ app.use('/api/me', ensureAuth);
 // Get spells data from API
 app.get('/api/allspells', async(req, res) => {
     try {
-        const data = await request.get(`http://www.dnd5eapi.co/api/spells/`);   
+        const data = await request.get(`https://cns-favorites-be.herokuapp.com/api/spells?search=`);   
         res.json(data.body);
     } catch (e) {
         console.error(e);
@@ -63,7 +63,7 @@ app.get('/api/allspells', async(req, res) => {
 // Get data for searched spell
 app.get('/api/spells', async(req, res) => {
     try {
-        const data = await request.get(`http://www.dnd5eapi.co/api/spells/${req.query.search}`);   
+        const data = await request.get(`http://www.dnd5eapi.co/api/spells/?name=${req.query.search}`);   
         res.json(data.body);
     } catch (e) {
         console.error(e);
