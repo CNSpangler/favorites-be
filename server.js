@@ -51,9 +51,9 @@ app.use('/api/me', ensureAuth);
 
 // *** API Routes ***
 // Get spells data from API
-app.get('/api/allspells', async(req, res) => {
+app.get('/api', async(req, res) => {
     try {
-        const data = await request.get(`http://www.dnd5eapi.co/api/spells/?name=`);   
+        const data = await request.get(`http://www.dnd5eapi.co/api/`);   
         res.json(data.body);
     } catch (e) {
         console.error(e);
@@ -63,7 +63,7 @@ app.get('/api/allspells', async(req, res) => {
 // Get data for searched spell
 app.get('/api/spells', async(req, res) => {
     try {
-        const data = await request.get(`http://www.dnd5eapi.co/api/spells/${req.query.name}`);   
+        const data = await request.get(`http://www.dnd5eapi.co/api/${req.query.name}`);   
         res.json(data.body);
     } catch (e) {
         console.error(e);
@@ -126,10 +126,10 @@ app.delete('/api/me/favorites/:id', async(req, res) => {
     }
 });
 
-// Start the server
-app.get('/api', (req, res) => {
-    res.send('does it work?');
-});
+// // Start the server
+// app.get('/api', (req, res) => {
+//     res.send('does it work?');
+// });
 
 app.listen(process.env.PORT, () => {
     console.log('server running on PORT', process.env.PORT);
