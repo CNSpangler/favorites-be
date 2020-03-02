@@ -126,10 +126,10 @@ app.delete('/api/me/favorites/:id', async(req, res) => {
     }
 });
 
-// // Start the server
-// app.get('/api', (req, res) => {
-//     res.send('does it work?');
-// });
+// Start the server
+app.get('/api', (req, res) => {
+    res.send('does it work?');
+});
 
 app.listen(process.env.PORT, () => {
     console.log('server running on PORT', process.env.PORT);
