@@ -61,7 +61,7 @@ app.get('/api/allmonsters', async(req, res) => {
 });
 
 // Get data for searched spell
-app.get('/api/monster', async(req, res) => {
+app.get('/api/monsters', async(req, res) => {
     try {
         const data = await request.get(`http://www.dnd5eapi.co/api/monsters/${req.query.search}`);   
         res.json(data.body);
