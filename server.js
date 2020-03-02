@@ -50,10 +50,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/me', ensureAuth);
 
 // *** API Routes ***
-// Get spells data from API
-app.get('/api', async(req, res) => {
+// Get monsters data from API
+app.get('/api/allmonsters', async(req, res) => {
     try {
-        const data = await request.get(`http://www.dnd5eapi.co/api/`);   
+        const data = await request.get(`http://www.dnd5eapi.co/api/monsters`);   
         res.json(data.body);
     } catch (e) {
         console.error(e);
@@ -61,9 +61,9 @@ app.get('/api', async(req, res) => {
 });
 
 // Get data for searched spell
-app.get('/api/spells', async(req, res) => {
+app.get('/api/monster', async(req, res) => {
     try {
-        const data = await request.get(`http://www.dnd5eapi.co/api/${req.query.name}`);   
+        const data = await request.get(`http://www.dnd5eapi.co/api/monsters/${req.query.search}`);   
         res.json(data.body);
     } catch (e) {
         console.error(e);
